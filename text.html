@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试画布</title>
+    <style>
+        .clear {
+            clear: both;
+        }
+        .main {
+            width: 100%;
+            height: 100%;
+        }
+        .canvas-main {
+            /* padding: 1rem; */
+            padding-left: 1px;
+            width: 100%;
+            height: 100%;
+        }
+        .tip {
+            position: absolute;
+            top: 20px;
+            left: calc(100% - 30px);
+            width: auto;
+            height: 30px;
+            /* transform: rotate(90deg); */
+            /* filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1); */
+        }
+        .tip ul li {
+            font-size: 18px;
+            color: #6ac3bf;
+            transform: rotate(90deg);
+            filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+        }
+        #signatureVessel {
+            box-sizing: border-box;
+            border: 1px solid #6ac3bf;
+        }
+        .btn1 {
+            position: absolute;
+            top: calc(100% - 11rem);
+            left: -1.8rem;
+            /* bottom: 3px; */
+            /* width: 100%; */
+            height: auto;
+            transform: rotate(90deg);
+            filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+        }
+        .btn2 {
+            position: absolute;
+            top: calc(100% - 5rem);
+            left: -1.8rem;
+            /* bottom: 3px; */
+            /* width: 100%; */
+            height: auto;
+            transform: rotate(90deg);
+            filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+        }
+        .btn1 button,
+        .btn2 button {
+            float: right;
+            margin-left: 0.5rem;
+            margin-right: 1rem;
+            width: 5rem;
+            text-align: center;
+            height: 2.4rem;
+            line-height: 2.4rem;
+            font-size: 1.2rem;
+            color: #333;
+            border: 1px solid #6ac3bf;
+            border-radius: 5px;
+        }
+        #signatureShow {
+            width: 8rem;
+            height: 5rem;
+        }
+        #signatureShow img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="canvas-main">
+          <canvas id="signatureVessel"></canvas>
+
+          <!-- 测试画布-->
+          <div id="signatureShow"></div>
+        </div>
+        <div class="tip">
+          <ul>
+            <li>请</li>
+            <li>在</li>
+            <li>空</li>
+            <li>白</li>
+            <li>区</li>
+            <li>域</li>
+            <li>内</li>
+            <li>横</li>
+            <li>向</li>
+            <li>书</li>
+            <li>写</li>
+          </ul>
+        </div>
+        <div class="btn1">
+          <button id="clearBtn">重写</button>
+        </div>
+        <div class="btn2">
+          <button id="saveBtn">提交</button>
+        </div>
+        <div class="clear"></div>
+      </div>
+    <script src="./a4.js"></script>
+    <script>
+        var draw = new Draw();
+        draw.init({id: "signatureVessel"});
+        var clearCanvas = document.querySelector("#clearBtn");
+        clearCanvas.addEventListener("click", function() {
+            draw.clearCanvas();
+        }, !1);
+        var save = document.querySelector("#saveBtn");
+        save.addEventListener("click", function() {
+            var data = draw.getGraphData();
+            console.log("data", data);
+        }, !1);
+    </script>
+</body>
+</html>
